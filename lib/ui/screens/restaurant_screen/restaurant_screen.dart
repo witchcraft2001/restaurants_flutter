@@ -4,6 +4,8 @@ import 'package:zomato_client/bloc/restaurant_bloc.dart';
 import 'package:zomato_client/data/zomato_api/models/location.dart';
 import 'package:zomato_client/data/zomato_api/models/restaurant.dart';
 import 'package:zomato_client/ui/image_container.dart';
+import 'package:zomato_client/ui/screens/favorite_screen/favorite_screen.dart';
+import 'package:zomato_client/ui/screens/restaurant_details_screen/restaurant_detail_screen.dart';
 
 class RestaurantScreen extends StatelessWidget {
   final Location location;
@@ -15,6 +17,13 @@ class RestaurantScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(location.title),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.favorite_border),
+            onPressed: () => Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => FavoriteScreen())),
+          ),
+        ],
       ),
       body: _buildSearch(context),
     );
@@ -89,6 +98,13 @@ class RestaurantTile extends StatelessWidget {
       ),
       title: Text(restaurant.name),
       trailing: Icon(Icons.keyboard_arrow_right),
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => RestaurantDetailScreen(restaurant: restaurant),
+          ),
+        );
+      },
     );
   }
 }

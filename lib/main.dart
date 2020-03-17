@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zomato_client/bloc/bloc_provider.dart';
+import 'package:zomato_client/bloc/favorite_bloc.dart';
 import 'package:zomato_client/bloc/location_bloc.dart';
 import 'package:zomato_client/data/zomato_api/models/location.dart';
 import 'package:zomato_client/ui/screens/location_screen/location_screen.dart';
@@ -13,12 +14,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<LocationBloc>(
       bloc: LocationBloc(),
-      child: MaterialApp(
-        title: 'Restaurant Finder',
-        theme: ThemeData(
-          primarySwatch: Colors.green,
+      child: BlocProvider<FavoriteBloc>(
+        bloc: FavoriteBloc(),
+        child: MaterialApp(
+          title: 'Restaurant Finder',
+          theme: ThemeData(
+            primarySwatch: Colors.green,
+          ),
+          home: MainScreen(),
         ),
-        home: MainScreen(),
       ),
     );
   }
