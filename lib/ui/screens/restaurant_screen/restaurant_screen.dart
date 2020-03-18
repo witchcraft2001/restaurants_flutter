@@ -5,6 +5,7 @@ import 'package:zomato_client/data/zomato_api/models/location.dart';
 import 'package:zomato_client/data/zomato_api/models/restaurant.dart';
 import 'package:zomato_client/ui/image_container.dart';
 import 'package:zomato_client/ui/screens/favorite_screen/favorite_screen.dart';
+import 'package:zomato_client/ui/screens/location_screen/location_screen.dart';
 import 'package:zomato_client/ui/screens/restaurant_details_screen/restaurant_detail_screen.dart';
 
 class RestaurantScreen extends StatelessWidget {
@@ -26,6 +27,15 @@ class RestaurantScreen extends StatelessWidget {
         ],
       ),
       body: _buildSearch(context),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.edit_location),
+        onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => LocationScreen(
+            isFullScreenDialog: true,
+          ),
+          fullscreenDialog: true
+        )),
+      ),
     );
   }
 

@@ -26,7 +26,7 @@ class LocationScreen extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: TextField(
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(), hintText: 'Enter a locatoin'),
+                    border: OutlineInputBorder(), hintText: 'Enter a location'),
                 onChanged: (query) => bloc.submitQuery(query),
               ),
             ),
